@@ -52,6 +52,35 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+  // Create Variables to store W's count
+  let playerWins = 0;
+  let computerWins = 0;
+
+  for (let i = 0; i < 5; i++) {
+    // Create Variables to store selections
+    const playerSelection = prompt("Input 'Rock', 'Paper', or 'Scissors'");
+    const computerSelection = computerPlay();
+
+    //Play round and increment player's win variable by 1 if they win
+    let roundOutcome = playRound(playerSelection, computerSelection);
+    console.log(roundOutcome);
+    if (roundOutcome.includes("win")) {
+      playerWins++;
+    } else if (roundOutcome.includes("lose")) {
+      computerWins++;
+    }
+    // Display current score
+    console.log(`Player Wins: ${playerWins} || Computer Wins: ${computerWins}`);
+  }
+  // The winner of the game is announced
+  if (playerWins > computerWins) {
+    return console.log("Player is the winner of the game!");
+  } else if (computerWins > playerWins) {
+    return console.log("Computer is the winner of the game!");
+  } else {
+    return console.log("The game is a draw!");
+  }
+}
+
+game();
