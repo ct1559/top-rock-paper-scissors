@@ -16,6 +16,8 @@ function playRound(playerSelection, computerSelection) {
     playerSelectionArr[i] = playerSelectionArr[i].toLowerCase();
   }
 
+  console.log("playing round");
+
   const playerSelectionFixed = playerSelectionArr.join("");
 
   // Functions for winning and losing
@@ -52,27 +54,38 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  // Create Variables to store W's count
-  let playerWins = 0;
-  let computerWins = 0;
+function game(playerChoice) {
+  //for (let i = 0; i < 5; i++) {
 
-  for (let i = 0; i < 5; i++) {
-    // Create Variables to store selections
-    const playerSelection = prompt("Input 'Rock', 'Paper', or 'Scissors'");
-    const computerSelection = computerPlay();
+  //variables for DOM manipulation
+  const playerScore = document.querySelector("#player");
+  const computerScore = document.querySelector("#computer");
+  const roundResutlsDiv = document.querySelector(".round-results");
+  const roundResults = document.createElement("div");
 
-    //Play round and increment player's win variable by 1 if they win
-    let roundOutcome = playRound(playerSelection, computerSelection);
-    console.log(roundOutcome);
-    if (roundOutcome.includes("win")) {
-      playerWins++;
-    } else if (roundOutcome.includes("lose")) {
-      computerWins++;
-    }
-    // Display current score
-    console.log(`Player Wins: ${playerWins} || Computer Wins: ${computerWins}`);
+  // Create Variables to store selections
+  const playerSelection = playerChoice; //prompt("Input 'Rock', 'Paper', or 'Scissors'");
+  const computerSelection = computerPlay();
+
+  //Play round and increment player's win variable by 1 if they win
+  let roundOutcome = playRound(playerSelection, computerSelection);
+  console.log(roundOutcome);
+  if (roundOutcome.includes("win")) {
+    playerWins++;
+  } else if (roundOutcome.includes("lose")) {
+    computerWins++;
   }
+
+  // Display Score
+  //playerScore.textContent = "test"; //`${playerWins}`;
+  //computerScore.textContent = "test"; //`${computerWins}`;
+
+  // Display play log
+  console.log(`Player Wins: ${playerWins} || Computer Wins: ${computerWins}`);
+  roundResults.textContent = `Player Wins: ${playerWins} || Computer Wins: ${computerWins}`;
+  roundResutlsDiv.insertBefore(roundResults, roundResutlsDiv.firstChild);
+
+  //}
   // The winner of the game is announced
   if (playerWins > computerWins) {
     return console.log("Player is the winner of the game!");
@@ -83,4 +96,19 @@ function game() {
   }
 }
 
-game();
+//game();
+
+// Create Variables to store W's count
+let playerWins = 0;
+let computerWins = 0;
+
+const playerBtn = document.querySelectorAll(".btn");
+console.log(playerBtn);
+playerBtn.forEach(function (currentValue, currentIndex, listObj) {
+  currentValue.addEventListener("click", function (e) {
+    game(e.target.id);
+  });
+});
+// playerBtn.addEventListener("click", () => {
+//   alert("button works");
+// });
