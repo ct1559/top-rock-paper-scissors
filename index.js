@@ -55,13 +55,20 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game(playerChoice) {
-  //for (let i = 0; i < 5; i++) {
-
   //variables for DOM manipulation
   const playerScore = document.querySelector("#player");
   const computerScore = document.querySelector("#computer");
   const roundResutlsDiv = document.querySelector(".round-results");
+  const winnerAnnouncement = document.querySelector("#winner-announcement");
   const roundResults = document.createElement("div");
+
+  // Check if new Game needs to be started
+  if (playerWins === 5 || computerWins === 5) {
+    playerWins = 0;
+    computerWins = 0;
+    roundResutlsDiv.textContent = "";
+    winnerAnnouncement.textContent = "";
+  }
 
   // Create Variables to store selections
   const playerSelection = playerChoice; //prompt("Input 'Rock', 'Paper', or 'Scissors'");
@@ -85,18 +92,15 @@ function game(playerChoice) {
   roundResults.textContent = `Player Wins: ${playerWins} || Computer Wins: ${computerWins}`;
   roundResutlsDiv.insertBefore(roundResults, roundResutlsDiv.firstChild);
 
-  //}
   // The winner of the game is announced
-  if (playerWins > computerWins) {
+  if (playerWins > computerWins && playerWins === 5) {
+    winnerAnnouncement.textContent = `Player is the winner of the game!`;
     return console.log("Player is the winner of the game!");
-  } else if (computerWins > playerWins) {
+  } else if (computerWins > playerWins && compputerWins === 5) {
+    winnerAnnouncement.textContent = `Computer is the winner of the game!`;
     return console.log("Computer is the winner of the game!");
-  } else {
-    return console.log("The game is a draw!");
   }
 }
-
-//game();
 
 // Create Variables to store W's count
 let playerWins = 0;
@@ -109,6 +113,3 @@ playerBtn.forEach(function (currentValue, currentIndex, listObj) {
     game(e.target.id);
   });
 });
-// playerBtn.addEventListener("click", () => {
-//   alert("button works");
-// });
