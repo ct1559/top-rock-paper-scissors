@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@100;400;900&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+}
+
+.header {
+  background-color: black;
+  text-align: center;
+}
+
+#header-rock {
+  color: brown;
+}
+
+#header-paper {
+  color: rgb(243, 233, 220);
+}
+
+#header-scissors {
+  color: silver;
+}
+
+h1 {
+  font-size: 75px;
+}
+
+h2 {
+  font-weight: bold;
+  margin-top: 30px;
+  font-size: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: auto;
+}
+
+.score-board {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  display: flex;
+  font-size: 25px;
+}
+
+#winner-announcement {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.sb-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.sb-name {
+  padding: 20px;
+}
+
+.btn {
+  width: 100px;
+  height: 50px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#rock {
+  background-color: brown;
+  color: white;
+}
+
+#paper {
+  background-color: rgb(243, 233, 220);
+  color: blue;
+}
+
+#scissors {
+  background-color: silver;
+}

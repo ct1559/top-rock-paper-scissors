@@ -30,7 +30,7 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelectionFixed === computerSelection) {
     return `It's a draw! Both chose ${computerSelection}`;
   } else {
-    //All other possiblilities
+    // All other possiblilities
     switch (playerSelectionFixed) {
       case "Rock":
         if (computerSelection === "Scissors") {
@@ -58,7 +58,7 @@ function game(playerChoice) {
   //variables for DOM manipulation
   const playerScore = document.querySelector("#player");
   const computerScore = document.querySelector("#computer");
-  const roundResutlsDiv = document.querySelector(".round-results");
+  const roundResultsDiv = document.querySelector(".round-results");
   const winnerAnnouncement = document.querySelector("#winner-announcement");
   const roundResults = document.createElement("div");
 
@@ -66,7 +66,7 @@ function game(playerChoice) {
   if (playerWins === 5 || computerWins === 5) {
     playerWins = 0;
     computerWins = 0;
-    roundResutlsDiv.textContent = "";
+    roundResultsDiv.textContent = "";
     winnerAnnouncement.textContent = "";
   }
 
@@ -84,19 +84,19 @@ function game(playerChoice) {
   }
 
   // Display Score
-  //playerScore.textContent = "test"; //`${playerWins}`;
-  //computerScore.textContent = "test"; //`${computerWins}`;
+  playerScore.textContent = `${playerWins}`;
+  computerScore.textContent = `${computerWins}`;
 
   // Display play log
   console.log(`Player Wins: ${playerWins} || Computer Wins: ${computerWins}`);
-  roundResults.textContent = `Player Wins: ${playerWins} || Computer Wins: ${computerWins}`;
-  roundResutlsDiv.insertBefore(roundResults, roundResutlsDiv.firstChild);
+  roundResults.textContent = roundOutcome; //`Player Wins: ${playerWins} || Computer Wins: ${computerWins}`;
+  roundResultsDiv.insertBefore(roundResults, roundResultsDiv.firstChild);
 
   // The winner of the game is announced
   if (playerWins > computerWins && playerWins === 5) {
     winnerAnnouncement.textContent = `Player is the winner of the game!`;
     return console.log("Player is the winner of the game!");
-  } else if (computerWins > playerWins && compputerWins === 5) {
+  } else if (computerWins > playerWins && computerWins === 5) {
     winnerAnnouncement.textContent = `Computer is the winner of the game!`;
     return console.log("Computer is the winner of the game!");
   }
